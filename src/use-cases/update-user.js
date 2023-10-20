@@ -28,6 +28,7 @@ export class UpdateUserUseCase {
             userId,
             user,
         )
+
         return updateUser
     }
 }
