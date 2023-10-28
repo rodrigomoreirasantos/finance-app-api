@@ -1,4 +1,3 @@
-import { CreateUserUseCase } from '../use-cases/index.js'
 import { EmailAlreadyInUseError } from '../errors/user.js'
 import {
     checkIfEmailIsValid,
@@ -11,6 +10,9 @@ import {
 } from './helpers/index.js'
 
 export class CreateUserController {
+    constructor(createUserUseCase) {
+        this.createUserUseCase = createUserUseCase
+    }
     async execute(httpRequest) {
         try {
             const params = httpRequest.body
@@ -41,8 +43,7 @@ export class CreateUserController {
             }
 
             // Chamar o use case
-            const createUserUseCase = new CreateUserUseCase()
-            const createdUser = await createUserUseCase.execute(params)
+            const createdUser = await this.createUserUseCase.execute(params)
 
             // Retornar a resposta para o usuário (status code)
             return created(createdUser)
