@@ -8,6 +8,7 @@ import {
     created,
     serverError,
     validateRequiredFields,
+    requiredFielsIsMissingResponse,
 } from '../helpers/index.js'
 
 export class CreateUserController {
@@ -32,9 +33,7 @@ export class CreateUserController {
             )
 
             if (!ok) {
-                return badRequest({
-                    message: `The field ${missingField} is required.`,
-                })
+                return requiredFielsIsMissingResponse(missingField)
             }
 
             // validação de tamanho de senha
