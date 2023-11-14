@@ -1,6 +1,6 @@
 import {
     checkIfIdIsValid,
-    invaldIdResponse,
+    invalidIdResponse,
     ok,
     serverError,
     userNotFoundResponse,
@@ -16,7 +16,7 @@ export class GetUserByIdController {
             const isIdValid = checkIfIdIsValid(userId)
 
             if (!isIdValid) {
-                return invaldIdResponse()
+                return invalidIdResponse()
             }
 
             const user = await this.getUserByIdUseCase.execute(

@@ -1,10 +1,10 @@
 import {
     serverError,
     checkIfIdIsValid,
-    invaldIdResponse,
+    invalidIdResponse,
     created,
     validateRequiredFields,
-    requiredFielsIsMissingResponse,
+    requiredFieldIsMissingResponse,
     checkIfAmountIsValid,
     checkIfTypeIsValid,
     invalidAmountResponse,
@@ -28,13 +28,13 @@ export class CreateTransactionController {
             )
 
             if (!ok) {
-                return requiredFielsIsMissingResponse(missingField)
+                return requiredFieldIsMissingResponse(missingField)
             }
 
             const userIdIsValid = checkIfIdIsValid(params.user_id)
 
             if (!userIdIsValid) {
-                return invaldIdResponse()
+                return invalidIdResponse()
             }
 
             const amountIsValid = checkIfAmountIsValid(params.amount)

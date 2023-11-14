@@ -3,14 +3,14 @@ import { badRequest } from './http.js'
 
 export const checkIfIdIsValid = (id) => validator.isUUID(id)
 
-export const invaldIdResponse = () =>
+export const invalidIdResponse = () =>
     badRequest({
         message: 'The provider ID is not valid.',
     })
 
 export const checkIfIsString = (value) => typeof value == 'string'
 
-export const requiredFielsIsMissingResponse = (field) => {
+export const requiredFieldIsMissingResponse = (field) => {
     return badRequest({
         message: `The field ${field} is required.`,
     })
